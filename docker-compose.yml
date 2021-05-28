@@ -1,0 +1,19 @@
+version : '3.8'
+
+services:
+  app:
+    env_file       :
+      - .env
+    build          :
+      context   : ./app/
+      dockerfile: Dockerfile.dev
+      args      :
+        DEBUGBOX_BASE_APP_IMAGE: "${DEBUGBOX_BASE_APP_IMAGE}"
+        DEBUGBOX_XDEBUG_VERSION: "${DEBUGBOX_XDEBUG_VERSION}"
+    
+    image          : "${DEBUGBOX_APP_IMAGE}"
+    cpus           : 0.5
+    mem_limit      : 512m
+    mem_reservation: 128m
+    entrypoint     : [ 'php', '-i' ]
+    command        : [ 'php', '-v' ]

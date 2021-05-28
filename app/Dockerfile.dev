@@ -1,0 +1,10 @@
+ARG DEBUGBOX_BASE_APP_IMAGE=library/php:8.0-fpm-buster
+
+FROM ${DEBUGBOX_BASE_APP_IMAGE}
+
+ARG DEBUGBOX_XDEBUG_VERSION=3.0.3
+
+COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
+
+RUN install-php-extensions gd xdebug-${DEBUGBOX_XDEBUG_VERSION} bcmath curl exif ffi gd gmp mysqli pdo pdo_mysql pdo_pgsql pdo_sqlite pgsql uuid xlswriter xsl yaml zip
+RUN install-php-extensions @composer
