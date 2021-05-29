@@ -1,11 +1,11 @@
 version : '3.8'
 
 services:
-  app:
+  debugbox:
     env_file       :
       - .env
     build          :
-      context   : ./app/
+      context   : ./debugbox/
       dockerfile: Dockerfile.dev
       args      :
         DEBUGBOX_BASE_APP_IMAGE: "${DEBUGBOX_BASE_APP_IMAGE}"
