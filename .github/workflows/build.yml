@@ -3,6 +3,8 @@ on  :
   push        :
     branches:
       - master
+      - branch-7.4-fpm
+      - branch-8.0-fpm
   pull_request:
     types: [ opened, synchronize, reopened ]
 jobs:
@@ -15,7 +17,20 @@ jobs:
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       -
-        name: SonarCloud Scan
+        name: SonarCloud Scan @master
         uses: SonarSource/sonarcloud-github-action@master
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+        env :
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN : ${{ secrets.SONAR_TOKEN }}
+      -
+        name: SonarCloud Scan @branch-7.4-fpm
+        uses: SonarSource/sonarcloud-github-action@branch-7.4-fpm
+        env :
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN : ${{ secrets.SONAR_TOKEN }}
+      -
+        name: SonarCloud Scan @branch-8.0-fpm
+        uses: SonarSource/sonarcloud-github-action@branch-8.0-fpm
+        env :
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN : ${{ secrets.SONAR_TOKEN }}
