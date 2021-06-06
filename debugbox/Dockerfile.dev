@@ -8,3 +8,9 @@ COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr
 
 RUN install-php-extensions gd xdebug-${DEBUGBOX_XDEBUG_VERSION} bcmath curl exif ffi gd gmp mysqli pdo pdo_mysql pdo_pgsql pdo_sqlite pgsql uuid xlswriter xsl yaml zip
 RUN install-php-extensions @composer
+
+WORKDIR /usr/src/myapp
+
+ENTRYPOINT ["php", "-i"]
+
+CMD ["php", "-v"]
