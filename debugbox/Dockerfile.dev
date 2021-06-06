@@ -11,6 +11,6 @@ RUN install-php-extensions @composer
 
 WORKDIR /usr/src/myapp
 
-ENTRYPOINT ["php", "-i"]
+ENTRYPOINT ["php"]
 
-CMD ["php", "-v"]
+CMD ["-v"]
