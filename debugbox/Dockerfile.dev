@@ -13,4 +13,4 @@ WORKDIR /usr/src/myapp
 
 ENTRYPOINT ["php"]
 
-CMD ["-v"]
+CMD [""]
