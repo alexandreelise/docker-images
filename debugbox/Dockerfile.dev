@@ -1,4 +1,4 @@
-ARG DEBUGBOX_BASE_APP_IMAGE=library/php:7.4-fpm-buster
+ARG DEBUGBOX_BASE_APP_IMAGE=library/php:8.0-fpm-buster
 
 FROM ${DEBUGBOX_BASE_APP_IMAGE}
 
